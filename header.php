@@ -19,12 +19,20 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#">Contact</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="signup.php">S'inscrire</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="signin.php">Se connecter</a>
-						</li>
+
+						<?php if (!isset($_SESSION['id'])): ?>
+							<li class="nav-item">
+								<a class="nav-link" href="signup.php">S'inscrire</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="signin.php">Se connecter</a>
+							</li>
+						<?php else: ?>
+							<li class="nav-item">
+								<a class="nav-link" href="bdd/disconn.php">Se déconnecter</a>
+							</li>
+						<?php endif ?>
+							
 					</ul>
 				</div>
 			</nav>

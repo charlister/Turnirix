@@ -1,0 +1,13 @@
+CREATE DATABASE turnirix;
+
+CREATE TABLE turnirix.organisateur ( 
+	id BIGINT NOT NULL AUTO_INCREMENT , 
+	nom VARCHAR(30) NOT NULL , 
+	prenom VARCHAR(70) NOT NULL , 
+	courriel VARCHAR(100) NOT NULL , 
+	mdp TEXT NOT NULL , 
+	anniv DATE NOT NULL , 
+	sexe CHAR(1) NOT NULL , 
+	date_inscription DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+	statut TINYINT NOT NULL DEFAULT '1' , 
+	PRIMARY KEY (id), UNIQUE Courriel (courriel))/* ENGINE = MyISAM*/;

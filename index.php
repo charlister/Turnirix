@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +21,17 @@
 
         <?php require_once 'header.php'; ?>
 
-        <main role="main" class="nc_welcome">
-            <h1 class="cover-heading">Bienvenue sur Turnirix</h1>
-            <p class="lead">Créez un compte et devenez maître du jeu. <br>Inscrivez vous dès à présent et organisez gratuitement des tournois sportifs.</p>
-            <p class="lead">
-                <a href="#" class="btn btn-lg btn-secondary">Créer un compte</a>
-            </p>
-        </main>
+        <?php if (isset($_SESSION['id'])): ?>
+            Une session est active. On met quoi du coup :) ?
+        <?php else: ?>
+            <main role="main" class="nc_welcome">
+                <h1 class="cover-heading">Bienvenue sur Turnirix</h1>
+                <p class="lead">Créez un compte et devenez maître du jeu. <br>Inscrivez vous dès à présent et organisez gratuitement des tournois sportifs.</p>
+                <p class="lead">
+                    <a href="signup.php" class="btn btn-lg btn-secondary">Créer un compte</a>
+                </p>
+            </main>
+        <?php endif ?>
 
         <?php require_once 'footer.php'; ?>
 
