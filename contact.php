@@ -29,7 +29,7 @@
 
         <div class="row p-3 mb-3">
           <div class="col-md-8 p-3 order-md-1 mx-auto">
-              <form class="" method="post" action="bdd/signupcontrol.php">
+              <form class="">
 
                 <div class="row">
 
@@ -41,8 +41,7 @@
 
                   <div class="col-md-6 mb-3">
                       <label for="prenom">Prénom</label>
-                      <input type="text" class="nc_form_control" name="prenom" id="prenom" placeholder="Prénom" value="" required>
-                      <span class="nc_error" id="aideprenom"></span>
+                      <input type="text" class="nc_form_control" name="prenom" id="prenom" placeholder="Prénom">.
                   </div>
 
                 </div>
@@ -54,8 +53,13 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="message">Objet</label><br>
+                    <textarea name="message" class="nc_form_control" id="message" placeholder="(facultatif)" ></textarea>
+                </div>
+
+                <div class="mb-3">
                     <label for="message">Message</label><br>
-                    <textarea name="message" class="nc_form_control" id="message" placeholder="Saisissez votre message" required style="height:200px"></textarea>
+                    <textarea name="message" class="nc_form_control" id="message" placeholder="Saisissez votre message" required style="min-height:200px"></textarea>
                     <span class="nc_error" id="aidemessage"></span>
                 </div>
 
