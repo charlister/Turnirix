@@ -15,7 +15,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
-  <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <div class="d-flex w-100 min-vh-100 p-3 mx-auto flex-column">
 
     <?php require_once 'header.php'; ?> <!-- HEADER -->
 
@@ -41,20 +41,21 @@
 
                   <div class="col-md-6 mb-3">
                       <label for="prenom">Prénom</label>
-                      <input type="text" class="nc_form_control" name="prenom" id="prenom" placeholder="Prénom">.
+                      <input type="text" class="nc_form_control" name="prenom" id="prenom" placeholder="Prénom" value="" required>
+                      <span class="nc_error" id="aideprenom"></span>
                   </div>
 
                 </div>
 
                 <div class="mb-3">
                     <label for="courriel">E-mail</label>
-                    <input type="email" class="nc_form_control" name="courriel" id="courriel" placeholder="exemple@domaine.fr" required>
+                    <input type="email" class="nc_form_control" name="courriel" id="courriel" placeholder="exemple@domaine.fr" value="" required>
                     <span class="nc_error" id="aidecourriel"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label for="message">Objet</label><br>
-                    <textarea name="message" class="nc_form_control" id="message" placeholder="(facultatif)" ></textarea>
+                    <label for="objet">Objet</label><br>
+                    <input type="text" name="objet" class="nc_form_control" id="objet" placeholder="(facultatif)" value="">
                 </div>
 
                 <div class="mb-3">
@@ -81,6 +82,7 @@
   <script src="contact.js" type="text/javascript"></script>
   <script src="js/jquery.js" type="text/javascript"></script>
   <script src="js/bootstrap.js" type="text/javascript"></script>
-
+  <script src="active.js" type="text/javascript"></script>
+  
 </body>
 </html>

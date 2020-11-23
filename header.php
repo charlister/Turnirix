@@ -7,8 +7,8 @@
 
 				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 					<ul class="navbar-nav ml-md-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span></a>
+						<li class="nav-item">
+							<a class="nav-link" href="/">Accueil</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Sport</a>
@@ -17,15 +17,15 @@
 							<a class="nav-link" href="#">Tournois</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Contact</a>
+							<a class="nav-link" href="/contact.php">Contact</a>
 						</li>
 
 						<?php if (!isset($_SESSION['id'])): ?>
 							<li class="nav-item">
-								<a class="nav-link" href="signup.php">S'inscrire</a>
+								<a class="nav-link" href="/signup.php">S'inscrire</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="signin.php">Se connecter</a>
+								<a class="nav-link" href="/signin.php">Se connecter</a>
 							</li>
 						<?php else: ?>
 							<li class="nav-item">

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="d-flex w-100 min-vh-100 p-3 mx-auto flex-column">
 
         <?php require_once 'header.php'; ?>
 
@@ -39,5 +39,6 @@
 
     <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/bootstrap.js" type="text/javascript"></script>
+    <script src="active.js" type="text/javascript"></script>
 </body>
 </html>
