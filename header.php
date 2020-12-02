@@ -8,14 +8,18 @@
 				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 					<ul class="navbar-nav ml-md-auto">
 						<li class="nav-item">
+							<!-- L'acceuil sera toujours visible mais son contenue d'épendra du fait que l'utilisateur soit connecté ou pas. -->
 							<a class="nav-link" href="/">Accueil</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Sport</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Tournois</a>
-						</li>
+
+						<?php if (isset($_SESSION['id'])): ?>
+							<!-- La gestion d'un tournois n'apparaîtra que pour les utilisateur authentifiés. -->
+							<li class="nav-item">
+								<a class="nav-link" href="/tournois.php">Tournois</a>
+							</li>
+						<?php endif ?>
+						
+						<!-- Formulaire de contact accessible par tous -->
 						<li class="nav-item">
 							<a class="nav-link" href="/contact.php">Contact</a>
 						</li>

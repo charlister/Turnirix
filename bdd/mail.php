@@ -23,7 +23,7 @@
 			    'X-Mailer' => 'PHP/' . phpversion()
 			);
 
-			$return = mail($to, $subject, $message, $headers);
+			$return = mail($to, $subject, $text, $headers);
 		    if ($return) {
 			    header("Location: /"); 
 			    exit;
