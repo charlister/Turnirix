@@ -9,5 +9,6 @@ CREATE TABLE turnirix.organisateur (
 	anniv DATE NOT NULL , 
 	sexe CHAR(1) NOT NULL , 
 	date_inscription DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , 
-	statut TINYINT NOT NULL DEFAULT '1' , 
+	statut TINYINT NOT NULL DEFAULT '0' , 
+	vkey VARCHAR(45) NOT NULL,
 	PRIMARY KEY (id), UNIQUE Courriel (courriel))/* ENGINE = MyISAM*/;

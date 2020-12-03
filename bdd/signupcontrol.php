@@ -2,6 +2,53 @@
     session_start();
     include_once('connbdd.php'); // Fichier PHP contenant la connexion à votre BDD
 
+
+
+    if(isset($_POST['submit'])){
+    
+        // Récupérer les données du formulaire
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $courriel = $_POST['courriel'];
+        $mdp = $_POST['mdp'];
+        $confmdp = $_POST['confmdp'];
+        $anniv = $_POST['anniv'];
+        $sexe = $_POST['sexe'];
+
+        // Se connecter à la base de données
+        $mysqli = NEW MySQLi('localhost','root','','turnirix');
+
+        // Encryption
+        $vkey = md5(time().$courriel);
+        $mdp = md5($mdp);
+
+        // Insertion des données
+        $insert = $mysqli->query("
+          INSERT INTO organisateur(nom,prenom,courriel,mdp,anniv,sexe,vkey) VALUES('$nom','$prenom','$courriel','$mdp','$anniv','$sexe','$vkey')");
+
+        if($insert){
+            // Envoyer la vérification par e-mail
+            $to = $courriel;
+            $subject = "Email Verification";
+            $message = "<a href='http://localhost/bdd/verification.php?vkey=$vkey'>Verify your account</a>";
+            $headers = "From: app.turnirix@gmail.com \r\n";
+            
+            // Pour utilisation du HTML dans un e-mail
+            $headers .= "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+            mail($to,$subject,$message,$headers);
+            header('location:pre_verification.php');
+
+        }
+        else{
+            echo "Fail";
+        }
+    }
+
+
+
+
     if (isset($_SESSION['id'])){ // S'il y a une session active alors on ne retourne plus sur cette page
         header("Location: /");
         echo "session active !";
