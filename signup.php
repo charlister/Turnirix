@@ -1,6 +1,7 @@
-<?php 
+--<?php 
     session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 
         <div class="row p-3 mb-3">
           <div class="col-md-8 p-3 order-md-1 mx-auto">
-              <form class="" method="post" action="bdd/signupcontrol.php">
+              <form class="" method="POST" action="bdd/signupcontrol.php">
 
                 <div class="row">
 
@@ -97,7 +98,8 @@
 
                 <hr class="mb-4">
 
-                <button name="signup" class="btn btn-primary nc_btn_block btn-lg" type="submit">S'inscrire</button>
+                <button name="submit" class="btn btn-primary nc_btn_block btn-lg" type="SUBMIT">S'inscrire</button>
+
             </form>
         </div>
       </div>
