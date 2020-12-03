@@ -4,7 +4,6 @@
 		$vkey = $_GET['vkey'];
 
 		$mysqli = NEW MySQLi('localhost','root','','turnirix');
-		
 		$resultSet = $mysqli->query("SELECT statut,vkey
 			                         FROM   organisateur
 			                         WHERE  statut=0 AND vkey='$vkey' 
