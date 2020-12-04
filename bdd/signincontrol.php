@@ -3,7 +3,7 @@
     include_once('connbdd.php'); // Fichier PHP contenant la connexion à votre BDD
 
     // S'il y a une session alors on ne retourne plus sur cette page  
-    if (isset($_SESSION['id'])){
+    if (isset($_SESSION['idO'])){
         header("Location: http://turnirix/");
         exit;
     }
@@ -27,9 +27,9 @@
 
             // S'il y a un résultat alors on va charger la SESSION de l'organisateur en initialisant les variables $_SESSION
             if ($b){
-                $_SESSION['id'] = $reqconn['id']; // id de l'organisateur unique pour les requêtes futures
-                $_SESSION['nom'] = $reqconn['nom'];
-                $_SESSION['prenom'] = $reqconn['prenom'];
+                $_SESSION['idO'] = $reqconn['idO']; // id de l'organisateur unique pour les requêtes futures
+                $_SESSION['nomO'] = $reqconn['nomO'];
+                $_SESSION['prenomO'] = $reqconn['prenomO'];
                 $_SESSION['courriel'] = $reqconn['courriel'];
                 $_SESSION['anniv'] = $reqconn['anniv'];
 

@@ -1,18 +1,18 @@
 <?php
 	include_once('bdd/connbdd.php');
-	if(isset($_GET['vkey'])){
+	if(isset($_GET['cleVerif'])){
 		// Process verification
-		$vkey = $_GET['vkey'];
+		$cleVerif = $_GET['cleVerif'];
 
-		$resultSet = $bdd->query("SELECT statut,vkey
+		$resultSet = $bdd->query("SELECT statut,cleVerif
 			                         FROM   organisateur
-			                         WHERE  statut=0 AND vkey='$vkey' 
+			                         WHERE  statut=0 AND cleVerif='$cleVerif' 
 			                         LIMIT  1");
 		if($resultSet){
 			// Email validation
 			$update = $bdd->query("UPDATE organisateur
 				                      SET    statut=1
-				                      WHERE  vkey='$vkey'
+				                      WHERE  cleVerif='$cleVerif'
 				                      LIMIT  1");
 			if($update){
 				echo "Votre compte a bien été vérifié. Veuillez vous <a href='http://turnirix/signin.php'>connecter</a>.";

@@ -35,14 +35,14 @@
                 <div class="row">
 
                   <div class="col-md-6 mb-3">
-                    <label for="nom">Nom</label>
-                    <input type="text" class="nc_form_control" name="nom" id="nom" placeholder="Nom" value="" required>
+                    <label for="nomO">Nom</label>
+                    <input type="text" class="nc_form_control" name="nomO" id="nomO" placeholder="Nom" value="" required>
                     <span class="nc_error" id="aidenom"></span>
                   </div>
 
                   <div class="col-md-6 mb-3">
-                      <label for="prenom">Prénom</label>
-                      <input type="text" class="nc_form_control" name="prenom" id="prenom" placeholder="Prénom" value="" required>
+                      <label for="prenomO">Prénom</label>
+                      <input type="text" class="nc_form_control" name="prenomO" id="prenomO" placeholder="Prénom" value="" required>
                       <span class="nc_error" id="aideprenom"></span>
                   </div>
 

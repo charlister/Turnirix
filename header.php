@@ -9,27 +9,27 @@
 					<ul class="navbar-nav ml-md-auto">
 						<li class="nav-item">
 							<!-- L'acceuil sera toujours visible mais son contenue d'épendra du fait que l'utilisateur soit connecté ou pas. -->
-							<a class="nav-link" href="http://turnirix/">Accueil</a>
+							<a class="nav-link" href="/">Accueil</a>
 						</li>
 
-						<?php if (isset($_SESSION['id'])): ?>
+						<?php if (isset($_SESSION['idO'])): ?>
 							<!-- La gestion d'un tournois n'apparaîtra que pour les utilisateur authentifiés. -->
 							<li class="nav-item">
-								<a class="nav-link" href="http://turnirix/tournois.php">Tournois</a>
+								<a class="nav-link" href="/tournois.php">Tournois</a>
 							</li>
 						<?php endif ?>
 						
 						<!-- Formulaire de contact accessible par tous -->
 						<li class="nav-item">
-							<a class="nav-link" href="http://turnirix/contact.php">Contact</a>
+							<a class="nav-link" href="/contact.php">Contact</a>
 						</li>
 
-						<?php if (!isset($_SESSION['id'])): ?>
+						<?php if (!isset($_SESSION['idO'])): ?>
 							<li class="nav-item">
-								<a class="nav-link" href="http://turnirix/signup.php">S'inscrire</a>
+								<a class="nav-link" href="/signup.php">S'inscrire</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="http://turnirix/signin.php">Se connecter</a>
+								<a class="nav-link" href="/signin.php">Se connecter</a>
 							</li>
 						<?php else: ?>
 							<li class="nav-item">

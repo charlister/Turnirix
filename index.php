@@ -9,7 +9,7 @@
     <title>Accueil</title>
 
     <!-- ONLY FOR THIS FILE (INDEX.PHP) -->
-    <?php if (isset($_SESSION['id'])): ?>
+    <?php if (isset($_SESSION['idO'])): ?>
         <link rel="stylesheet" type="text/css" href="index_2.css">
     <?php else: ?>
         <link rel="stylesheet" type="text/css" href="index_1.css">
@@ -26,7 +26,7 @@
 
         <?php require_once 'header.php'; ?>
 
-        <?php if (isset($_SESSION['id'])): ?>
+        <?php if (isset($_SESSION['idO'])): ?>
             <main class="mt-5" role="main">
 
               <div id="myCarousel" class="carousel slide" data-ride="carousel">

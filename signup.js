@@ -1,7 +1,7 @@
 var form = document.querySelector("form");
 
-var _nom = document.getElementById("nom"); var b_nom = false;
-var _prenom = document.getElementById("prenom"); var b_prenom = false;
+var _nom = document.getElementById("nomO"); var b_nom = false;
+var _prenom = document.getElementById("prenomO"); var b_prenom = false;
 var _courriel = document.getElementById("courriel"); var b_courriel = false;
 var _mdp = document.getElementById("mdp"); var b_mdp = false;
 var _confmdp = document.getElementById("confmdp"); var b_confmdp = false;
