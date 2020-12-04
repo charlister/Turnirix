@@ -37,7 +37,7 @@
 
             $to = $courriel;
             $subject = "Email Verification";
-            $message = "<a href='http://hlin510/verification.php?vkey=$vkey'>Confirmez votre compte</a>";
+            $message = "<a href='http://turnirix/verification.php?vkey=$vkey'>Confirmez votre compte</a>";
             $headers = "From: app.turnirix@gmail.com \r\n";
             
             // For usage of html in email
