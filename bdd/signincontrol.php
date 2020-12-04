@@ -4,7 +4,7 @@
 
     // S'il y a une session alors on ne retourne plus sur cette page  
     if (isset($_SESSION['id'])){
-        header("Location: /");
+        header("Location: http://turnirix/");
         exit;
     }
 
@@ -21,7 +21,7 @@
             $reqconn = $bdd->query("SELECT * FROM organisateur WHERE courriel = ? AND mdp = ?", array($courriel, crypt($mdp, '$6$rounds=5000$niIHubOIQqMLPSbjSQds$')));
             $reqconn = $reqconn->fetch();
             
-            if ($reqconn['id'] === ""){ // Si on a pas de résultat alors c'est qu'il n'y a pas d'organisateur correspondant au couple courriel / mot de passe
+            if (!$reqconn){ // Si on a pas de résultat alors c'est qu'il n'y a pas d'organisateur correspondant au couple courriel / mot de passe
                 $b = false;
             }
 
@@ -33,8 +33,11 @@
                 $_SESSION['courriel'] = $reqconn['courriel'];
                 $_SESSION['anniv'] = $reqconn['anniv'];
 
-                header("Location: /"); // "a" et non 'a' sinon après on a des soucis pas croyable
+                header("Location: http://turnirix/");
                 exit;
+            }
+            else {
+                echo "Votre tentative de connexion a échoué. Veuillez <a href='http://turnirix/signin.php'>réessayer</a> !";
             }
         }
     }

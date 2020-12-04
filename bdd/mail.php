@@ -25,8 +25,7 @@
 
 			$return = mail($to, $subject, $text, $headers);
 		    if ($return) {
-			    header("Location: /"); 
-			    exit;
+		    	echo "Votre message a bien été envoyé. Retourner à la page d'<a href='http://turnirix/'>acceuil</a>";
 		    }
         }
     }
