@@ -25,6 +25,7 @@
 	    public function register($sql, $data = array()){
 	      	$requete = $this->conn->prepare($sql);
 	      	$requete->execute($data);
+	      	return $requete;
 	    }
   	}
 

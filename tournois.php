@@ -10,7 +10,6 @@
 
     <!-- tournois css CODE -->
     <link rel="stylesheet" type="text/css" href="sign.css"> <!-- important pour les formulaire de la page -->
-
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
@@ -22,7 +21,7 @@
 
 		<!-- DEBUT DU CODE -->
 
-		<?php include_once 'test_tournois.php'; ?>
+		<?php include_once 'corps_tournois.php'; ?>
 
 		<!-- FIN DU CODE -->
 

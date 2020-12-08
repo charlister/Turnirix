@@ -27,17 +27,21 @@
 
             // S'il y a un résultat alors on va charger la SESSION de l'organisateur en initialisant les variables $_SESSION
             if ($b){
-                $_SESSION['idO'] = $reqconn['idO']; // id de l'organisateur unique pour les requêtes futures
-                $_SESSION['nomO'] = $reqconn['nomO'];
-                $_SESSION['prenomO'] = $reqconn['prenomO'];
-                $_SESSION['courriel'] = $reqconn['courriel'];
-                $_SESSION['anniv'] = $reqconn['anniv'];
+                if ($reqconn['cleVerif'] === 0) {
+                    echo "Vous devez d'abord confirmer votre adresse email avant de vous <a href='http://turnirix/signin.php'>connecter</a>";
+                } else {
+                    $_SESSION['idO'] = $reqconn['idO']; // id de l'organisateur unique pour les requêtes futures
+                    $_SESSION['nomO'] = $reqconn['nomO'];
+                    $_SESSION['prenomO'] = $reqconn['prenomO'];
+                    $_SESSION['courriel'] = $reqconn['courriel'];
+                    $_SESSION['anniv'] = $reqconn['anniv'];
 
-                header("Location: http://turnirix/");
-                exit;
+                    header("Location: http://turnirix/");
+                    exit;
+                } 
             }
             else {
-                echo "Votre tentative de connexion a échoué. Veuillez <a href='http://turnirix/signin.php'>réessayer</a> !";
+                echo "Votre tentative de connexion a échoué (mot de passe incorrect ou compte inexistant). Veuillez <a href='http://turnirix/signin.php'>réessayer</a> !";
             }
         }
     }

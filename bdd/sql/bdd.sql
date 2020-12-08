@@ -2,33 +2,45 @@ CREATE DATABASE IF NOT EXISTS `turnirix`
 
 USE `turnirix`;
 
-/*J'ai essayé de mettre en majuscule la 
-première lettre des relations, mais ça 
-revient toujours en miniscule.*/
 DROP TABLE IF EXISTS `equipe`;
 CREATE TABLE `equipe` (
   `nomEq` varchar(50) NOT NULL,
+  `niveauEq` tinyint NOT NULL,
   `nomT` varchar(50) NOT NULL,
-  PRIMARY KEY (`nomEq`)
+  `dateT` date NOT NULL,
+  `lieuT` varchar(50) NOT NULL,
+  PRIMARY KEY (`nomEq`,`nomT`,`dateT`,`lieuT`)
+  /*
+  Avec PRIMARY KEY (`nomEq`,`dateT`,`lieuT`), on ne peut pas utiliser le même nom d'équipe pour cette date et ce lieu
+  Avec PRIMARY KEY (`nomT`,`nomEq`,`dateT`,`lieuT`), le nom de cette équipe peut être utiliser pour un autre tournoi.
+  Celà entraine l'ajout de nomT dans JOUEUR
+  */
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `evenement`;
 CREATE TABLE `evenement` (
   `dateEv` date NOT NULL,
-  `lieu` varchar(50) NOT NULL,
+  `lieuEv` varchar(50) NOT NULL,
   `nomEv` varchar(50) NOT NULL,
   `sport` varchar(50) NOT NULL,
+  `nbTournois` tinyint NOT NULL,
   `idO` bigint NOT NULL,
-  PRIMARY KEY (`dateEv`,`lieu`)
+  PRIMARY KEY (`dateEv`,`lieuEv`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `joueur`;
 CREATE TABLE `joueur` (
-  `idJ` bigint NOT NULL,
   `nomJ` varchar(50) NOT NULL,
-  `niveau` tinyint NOT NULL,
+  `niveauJ` tinyint NOT NULL,
   `nomEq` varchar(50) NOT NULL,
-  PRIMARY KEY (`idJ`)
+  `nomT` varchar(50) NOT NULL,
+  `dateT` date NOT NULL,
+  `lieuT` varchar(50) NOT NULL,
+  PRIMARY KEY (`nomJ`,`nomEq`,`nomT`,`dateT`,`lieuT`)
+  /*
+  Avec PRIMARY KEY (`nomJ`,`nomEq`,`dateT`,`lieuT`), le nom deu joueur ne peut pas être utilisé pour une autre équipe du même tournois
+  Avec PRIMARY KEY (`nomJ`,`nomEq`,`nomT`,`dateT`,`lieuT`) on a donc la véritable clé.
+  */
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `organisateur`;
@@ -55,17 +67,23 @@ CREATE TABLE `poule` (
 DROP TABLE IF EXISTS `repartir`;
 CREATE TABLE `repartir` (
   `nomEq` varchar(50) NOT NULL,
+  `nomT` varchar(50) NOT NULL,
+  `dateT` date NOT NULL,
+  `lieuT` varchar(50) NOT NULL,
   `idP` bigint NOT NULL,
   `tour` tinyint NOT NULL,
-  PRIMARY KEY (`nomEq`,`idP`)
+  PRIMARY KEY (`nomEq`,`nomT`,`dateT`,`lieuT`,`idP`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `tournois`;
 CREATE TABLE `tournois` (
   `nomT` varchar(50) NOT NULL,
   `typeJeu` tinyint NOT NULL,
-  `dateEv` date NOT NULL,
-  `lieu` varchar(50) NOT NULL,
   `frais` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`nomT`)
+  `dateT` date NOT NULL,
+  `lieuT` varchar(50) NOT NULL,
+  PRIMARY KEY (`nomT`,`dateT`,`lieuT`)
+  /*Avec PRIMARY KEY (`dateT`,`lieuT`), on ne peut pas créer un autre tournois à la même date et au mêeme lieu
+    Avec PRIMARY KEY (`nomT`,`dateT`,`lieuT`) on a la véritable clé
+    Celà entraine l'ajout de nomT dans EQUIPE*/
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

@@ -26,34 +26,6 @@ $("#creer").click(function (e) {
   }
 });
 
-/*On impémente le même code pour les deux autres boutons*/
-
-// Clic sur le bouton "Editer événément"
-$("#editer").click(function (e) {
-  $("#edition").toggle();
-  console.log("Toggle effectué");
-  console.log(e.target.getAttribute("id"));
-  
-  if (e.target.getAttribute("id") === "editer") {
-    $("#creer").attr("disabled", true);
-    $("#enregistrer").attr("disabled", true);
-    $(e.target).attr({
-      class : "btn btn-danger", 
-      id : "annulerEdition" 
-    });  
-    $(e.target).text("Annuler édition"); 
-  } 
-  else {
-    $("#creer").removeAttr("disabled");
-    $("#enregistrer").removeAttr("disabled");
-    $(e.target).attr({
-      class : "btn btn-secondary",
-      id : "editer"
-    });  
-    $(e.target).text("Editer événement");
-  }
-});
-
 // Clic sur le bouton "Préinscrire équipe"
 $("#enregistrer").click(function (e) {
   $("#enregistrement").toggle();
@@ -82,25 +54,44 @@ $("#enregistrer").click(function (e) {
 
 
 
-// Clic sur le bouton "+" dans l'ajout d'équipe
-$("button#ajouter").click(function () { 
-  let nbPlayer = parseInt($("#nbPlayer").val())+1;
-  $("#nbPlayer").attr("value", nbPlayer);
+$("button#ajouterJoueur").click(function () { 
+  let nbJoueurs = parseInt($("#nbJoueurs").val())+1;
+  $("#nbJoueurs").attr("value", nbJoueurs);
   let newPlayer = "<hr class='my-3'>\
                     <div class=''>\
                       <div class='mb-3'>\
-                          <input type='text' id='joueur"+nbPlayer+"' name='joueur"+nbPlayer+"' class='nc_form_control' placeholder='Nom du joueur'>\
+                          <input type='text' id='joueur"+nbJoueurs+"' name='joueur"+nbJoueurs+"' class='nc_form_control' placeholder='Nom du joueur'>\
                       </div>\
                       <div class='mb-3'>\
-                        <select id='niveau"+nbPlayer+"' name='niveau"+nbPlayer+"' class='nc_form_control'>\
-                          <option>Pro</option>\
-                          <option>Elite</option>\
-                          <option>Régional</option>\
-                          <option>Départemental</option>\
-                          <option selected>Loisir</option>\
+                        <select id='niveau"+nbJoueurs+"' name='niveau"+nbJoueurs+"' class='nc_form_control'>\
+                          <option value='1'>Pro</option>\
+                          <option value='2'>Elite</option>\
+                          <option value='3'>Régional</option>\
+                          <option value='4'>Départemental</option>\
+                          <option value='5' selected>Loisir</option>\
                         </select>\
                       </div>\
                     </div>";
   $(this).before(newPlayer);
-  console.log("Champs J"+nbPlayer+" ajouté !");
+  console.log("Champs J"+nbJoueurs+" ajouté !");
+});
+
+$("button#ajouterTournoi").click(function () { 
+  let nbTournois = parseInt($("#nbTournois").val())+1;
+  $("#nbTournois").attr("value", nbTournois);
+
+  let newTournois = "<hr class='my-3'>\
+                    <div class='mb-3'>\
+                      <div class='mb-3'>\
+                          <input type='text' class='nc_form_control' name='nomT"+nbTournois+"' id='nomT"+nbTournois+"' placeholder='Nom du tournoi' required>\
+                      </div>\
+                      <div class='mb-3'>\
+                        <input type='number' class='nc_form_control' name='typeJeu"+nbTournois+"' id='typeJeu"+nbTournois+"' min='1' value='1'>\
+                      </div>\
+                      <div class='mb-3'>\
+                        <input type='number' class='nc_form_control' name='frais"+nbTournois+"' id='frais"+nbTournois+"' min='0' value='0'>\
+                      </div>\
+                    </div>";
+  $(this).before(newTournois);
+  console.log("Champs Tournoi "+nbTournois+" ajouté !");
 });
