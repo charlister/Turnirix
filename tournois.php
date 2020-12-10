@@ -21,7 +21,7 @@
 
 		<!-- DEBUT DU CODE -->
 
-		<?php include_once 'corps_tournois.php'; ?>
+		<?php include_once 'tournois_corps.php'; ?>
 
 		<!-- FIN DU CODE -->
 

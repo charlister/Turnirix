@@ -22,7 +22,7 @@
 			}
 		}
 		else{
-			echo "Ce compte est invalide ou a déjà été vérifié. Retourner à la page d'd'<a href='http://turnirix/'>acceuil</a>";
+			echo "Ce compte est invalide ou a déjà été vérifié. Veuillez retourner à la page d<a href='http://turnirix/'>acceuil</a>";
 		}
 	}
 	else{
