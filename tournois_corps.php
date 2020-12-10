@@ -57,7 +57,7 @@
 
         <!-- FORMULAIRE DE CREATION -->
         <span id="creation" class="eventForm">
-          <div class="p-3">
+          <div class="p-3 col-md-12">
 
               <form method="post" action="bdd/gererEvenement.php">
 
@@ -87,25 +87,29 @@
                 </div>
 
                 <hr class="mb-4">
+                <div class="row col-md-12">
+                  <div class="mb-3  col-md-6">
+                    <label for="nomT1">Nom du tournoi</label> <br>
+                    <input type="text" class="nc_form_control" name="nomT1" id="nomT1" placeholder="Nom du tournoi" required>
+                  </div>
 
-                <div class="mb-3">
-                  <label for="nomT1">Nom du tournoi</label> <br>
-                  <input type="text" class="nc_form_control" name="nomT1" id="nomT1" placeholder="Nom du tournoi" required>
-                </div>
+                  <div class="mb-3">
+                    <label for="typeJeu1  col-md-3">Type de jeu</label> <br>
+                    <input type="number" class="nc_form_control" name="typeJeu1" id="typeJeu1" min="1" value="1">
+                  </div>
 
-                <div class="mb-3">
-                  <label for="typeJeu1">Type de jeu</label> <br>
-                  <input type="number" class="nc_form_control" name="typeJeu1" id="typeJeu1" min="1" value="1">
+                  <div class="mb-3  col-md-3">
+                    <label for="frais1">Frais de participation</label> <br>
+                    <input type="number" class="nc_form_control" name="frais1" id="frais1" min="0" value="0">
+                  </div>
                 </div>
-
-                <div class="mb-3">
-                  <label for="frais1">Frais de participation</label> <br>
-                  <input type="number" class="nc_form_control" name="frais1" id="frais1" min="0" value="0">
-                </div>
+                  
 
                 <input type="number" name="nbTournois" id="nbTournois" value="1" hidden><!-- Pour avoir le nombre de tournois ajoutés -->
 
                 <button type="button" name="ajouterTournoi" id="ajouterTournoi" class="btn btn-primary text-wrap text-truncate">Ajouter tournoi</button>
+
+                <button type="button" name="effacer" id="effacer" class="btn btn-danger text-wrap text-truncate">Effacer</button>
 
                 <hr class="mb-4">
 

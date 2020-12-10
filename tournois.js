@@ -81,17 +81,21 @@ $("button#ajouterTournoi").click(function () {
   $("#nbTournois").attr("value", nbTournois);
 
   let newTournois = "<hr class='my-3'>\
-                    <div class='mb-3'>\
-                      <div class='mb-3'>\
+                    <div class='my-2 row col-md-12'>\
+                      <div class='mb-3 col-md-6'>\
                           <input type='text' class='nc_form_control' name='nomT"+nbTournois+"' id='nomT"+nbTournois+"' placeholder='Nom du tournoi' required>\
                       </div>\
-                      <div class='mb-3'>\
+                      <div class='mb-3 col-md-3'>\
                         <input type='number' class='nc_form_control' name='typeJeu"+nbTournois+"' id='typeJeu"+nbTournois+"' min='1' value='1'>\
                       </div>\
-                      <div class='mb-3'>\
+                      <div class='mb-3 col-md-3'>\
                         <input type='number' class='nc_form_control' name='frais"+nbTournois+"' id='frais"+nbTournois+"' min='0' value='0'>\
                       </div>\
                     </div>";
   $(this).before(newTournois);
   console.log("Champs Tournoi "+nbTournois+" ajouté !");
+});
+
+$("button#effacer").click(function (){
+  document.forms[0].reset();
 });
