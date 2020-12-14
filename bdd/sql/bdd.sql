@@ -24,6 +24,7 @@ CREATE TABLE `evenement` (
   `nomEv` varchar(50) NOT NULL,
   `sport` varchar(50) NOT NULL,
   `nbTournois` tinyint NOT NULL,
+  `statutEv` tinyint NOT NULL DEFAULT '0',
   `idO` bigint NOT NULL,
   PRIMARY KEY (`dateEv`,`lieuEv`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -61,6 +62,8 @@ CREATE TABLE `organisateur` (
 DROP TABLE IF EXISTS `poule`;
 CREATE TABLE `poule` (
   `idP` bigint NOT NULL,
+  `tour` tinyint NOT NULL,
+  `nombreEq` tinyint NOT NULL,
   PRIMARY KEY (`idP`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -71,7 +74,7 @@ CREATE TABLE `repartir` (
   `dateT` date NOT NULL,
   `lieuT` varchar(50) NOT NULL,
   `idP` bigint NOT NULL,
-  `tour` tinyint NOT NULL,
+  `rang`tinyint NOT NULL,
   PRIMARY KEY (`nomEq`,`nomT`,`dateT`,`lieuT`,`idP`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
