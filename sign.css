@@ -100,3 +100,28 @@ label {
 /*input[type="submit"].nc_btn_block {
   width: 100%;
 }*/
+
+
+img {
+  opacity: 0.8;
+}
+
+
+.bodysignup{
+  background-image: url(images/volleyball3.jpg);
+}
+
+.bodysignin{
+  background-image: url(images/tennis2.jpg);
+}
+
+.bodycontactform{
+  background-color: rgba(25, 30, 38, 0.1);
+}
+
+label {
+  font-weight: bold;
+  color: #212529;
+}
+
+

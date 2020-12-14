@@ -9,7 +9,7 @@
     <title>Accueil</title>
 
     <!-- ONLY FOR THIS FILE (INDEX.PHP) -->
-    <?php if (isset($_SESSION['idO'])): ?>
+    <?php if (isset($_SESSION['idO'])): ?> 
         <link rel="stylesheet" type="text/css" href="index_2.css">
     <?php else: ?>
         <link rel="stylesheet" type="text/css" href="index_1.css">
@@ -36,7 +36,6 @@
                   <li data-target="#myCarousel" data-slide-to="1"></li>
                   <li data-target="#myCarousel" data-slide-to="2"></li>
                   <li data-target="#myCarousel" data-slide-to="3"></li>
-                  <li data-target="#myCarousel" data-slide-to="4"></li>
                 </ol>
 
                 <div class="carousel-inner">
@@ -49,8 +48,7 @@
 
                     <div class="container">
                       <div class="carousel-caption text-left">
-                        <h1>Petanque</h1>
-                        <p class="text-wrap text-justify text-truncate">XXXXXXXXXXX XXXXXXX XXXXXXXX XXXX XXXXX XXXXXXXXXXX XXXXXX XXXXXXXXXX XXXXXXX XXXXXXX XXXXXXXXXXXX</p>
+                        <h1><span>Petanque</span></h1>
                       </div>
                     </div>
                   </div>
@@ -63,8 +61,7 @@
 
                     <div class="container">
                       <div class="carousel-caption text-left">
-                        <h1>Volley</h1>
-                        <p class="text-wrap text-justify text-truncate">XXXXXXXXXXX XXXXXXX XXXXXXXX XXXX XXXXX XXXXXXXXXXX XXXXXX XXXXXXXXXX XXXXXXX XXXXXXX XXXXXXXXXXXX</p>
+                        <h1><span>Volley</span></h1>
                       </div>
                     </div>
                   </div>
@@ -77,8 +74,7 @@
 
                     <div class="container">
                       <div class="carousel-caption text-left">
-                        <h1>Tennis</h1>
-                        <p class="text-wrap text-justify text-truncate">XXXXXXXXXXX XXXXXXX XXXXXXXX XXXX XXXXX XXXXXXXXXXX XXXXXX XXXXXXXXXX XXXXXXX XXXXXXX XXXXXXXXXXXX</p>
+                        <h1><span>Tennis</span></h1>
                       </div>
                     </div>
                   </div>
@@ -91,21 +87,7 @@
 
                     <div class="container">
                       <div class="carousel-caption text-left">
-                        <h1>Foot</h1>
-                        <p class="text-wrap text-justify text-truncate">XXXXXXXXXXX XXXXXXX XXXXXXXX XXXX XXXXX XXXXXXXXXXX XXXXXX XXXXXXXXXX XXXXXXX XXXXXXX XXXXXXXXXXXX</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="carousel-item">
-                    <svg>
-                      <img src="../images/OZ75PD0.jpg" class="img-fluid">
-                    </svg>
-
-                    <div class="container">
-                      <div class="carousel-caption">
-                        <h1>Image ?</h1>
-                        <p class="text-wrap text-justify text-truncate">XXXXXXXXXXX XXXXXXX XXXXXXXX XXXX XXXXX XXXXXXXXXXX XXXXXX XXXXXXXXXX XXXXXXX XXXXXXX XXXXXXXXXXXX</p>
+                        <h1><span>Foot</span></h1>
                       </div>
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 <?php 
     session_start();
-?>
+?>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
-  <div class="d-flex w-100 min-vh-100 p-3 mx-auto flex-column">
+  <div class="d-flex w-100 min-vh-100 p-3 mx-auto flex-column bodysignin">
 
     <?php require_once 'header.php'; ?> <!-- HEADER -->
 
@@ -25,27 +26,27 @@
 
       <div class="py-5 text-center">
         <h2>Connectez-vous à votre compte Turnirix</h2>
-        <p class="lead">Devrions-nous écrire un mot ici ?</p>
+        <p class="lead">en seulement quelques clics</p>
       </div>
 
       <div class="row p-3">
-        <div class="col-md-8 p-3 order-md-1 mx-auto">
+        <div class="col-md-5 p-3 order-md-1 mx-auto boxsignin">
 
           <form method="post" action="bdd/signincontrol.php">
             <div class="mb-3">
               <label for="courriel">E-mail</label> <br>
-              <input type="email" class="nc_form_control" name="courriel" id="courriel" placeholder="exemple@domaine.fr" required>
+              <input type="email" class="nc_form_control" name="courriel" id="courrielid" placeholder="exemple@domaine.fr" required>
               <span class="nc_error" id="aidecourriel"></span>
             </div>
             <div class="mb-3">
               <label for="mdp">Mot de passe</label> <br>
-              <input type="password" class="nc_form_control" name="mdp" id="mdp" placeholder="********" required>
+              <input type="password" class="nc_form_control" name="mdp" id="mdpid" placeholder="********" required>
             </div>
 
             <hr class="mb-4">
 
               <div class="bottom-text">
-                <input type="checkbox" name="remember" checked="checked">
+                <input type="checkbox" id='remember' name="remember" checked="checked">
                 <label for="remember">Rester connecté(e)</label> 
               </div>
 

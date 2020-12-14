@@ -15,21 +15,20 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
-<body>
-  <div class="d-flex w-100 min-vh-100 p-3 mx-auto flex-column">
-
+<body >
+  <div class="d-flex w-100 min-vh-100 p-3 mx-auto flex-column bodysignup">
     <?php require_once 'header.php'; ?> <!-- HEADER -->
 
     <!-- MAIN BODY -->
 
-		<div class="container">
+		<div class="container ">
         <div class="py-5 text-center">
             <h2>Créez votre compte Turnirix</h2>
             <p class="lead">Devrions-nous écrire un mot ici ?</p>
         </div>
 
-        <div class="row p-3 mb-3">
-          <div class="col-md-8 p-3 order-md-1 mx-auto">
+        <div class="row p-3 mb-3 boxForm">
+          <div class="col-md-6 p-3 order-md-1 mx-auto">
               <form class="" method="POST" action="bdd/signupcontrol.php">
 
                 <div class="row">
