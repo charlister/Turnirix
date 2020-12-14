@@ -11,9 +11,14 @@
               WHERE DATEDIFF(dateEv, now())=0 AND idO = ".$_SESSION['idO']);
 
             if ($tupleEvPrevuToday = $evenementPrevuToday->fetch()) {
-              echo "<h1 class='display-3 text-truncate'>".$tupleEvPrevuToday['nomEv']."</h1>";
-              echo "<p>Vous avez un évènement prévu pour aujourd'hui.</p>";
-              echo "<p><a class='btn btn-primary btn-lg' href='evenement.php' role='button'>Lancer l'événement</a></p>";
+              if($tupleEvPrevuToday['statutEv'] === "0") {
+                echo "<h1 class='display-3 text-truncate'>".$tupleEvPrevuToday['nomEv']."</h1>";
+                echo "<p>Vous avez un évènement prévu pour aujourd'hui.</p>";
+                echo "<p><a class='btn btn-primary btn-lg' href='evenement.php' role='button'>Lancer l'événement</a></p>";
+              }
+              else {
+                echo "<p>L'événement d'aujourd'hui a été cloturé.</p>";
+              }
             } else {
               echo "<p>Aucun évènement n'est prévu pour aujourd'hui.</p>";
             }
@@ -131,16 +136,17 @@
                 $nomEv = $bdd->query("
                   SELECT * 
                   FROM evenement 
-                  WHERE DATEDIFF(dateEv, now())>=0 AND idO=$id 
+                  WHERE DATEDIFF(dateEv, now())>=0 AND idO=$id AND statutEv=0
                   ORDER BY dateEv"); /*Sélectionner les évènements qui ont une date ultérieure ou actuelle pour les proposer à l'organisateur lors de l'inscription des équipes*/
 
-                echo "<ul class='mb-3'>";
+                echo "<ul class='mb-3 list-unstyled'>";
                 $b = false;
                 while ($tupleEv = $nomEv->fetch()) {
                   $b = true;
-                  echo "<li class=''>";
-                    echo "Evénement ".$tupleEv['nomEv']." | le ".$tupleEv['dateEv']." | à ".$tupleEv['lieuEv'];
-                    echo "<ul >";
+                  echo "<li>";
+
+                    echo "<span class='media text-muted mb-2 mt-4'><strong class='d-block text-gray-dark'>Evénement ".$tupleEv['nomEv']." le ".$tupleEv['dateEv']." à ".$tupleEv['lieuEv']."</strong></span>";
+                    echo "<ul class='list-unstyled'>";
 
                       $tournois = $bdd->query("
                         SELECT * 
