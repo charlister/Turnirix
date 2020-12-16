@@ -43,7 +43,7 @@
 		    				_this.attr("disabled", "true");
 		    			}
 		    		</script>
-		    		<p class="text-center">Attention ! Certains <button id="frime" type="button" class="btn btn-warning" onclick="warning($(this))">choix</button> sont irréversible !</p>
+		    		<p class="text-center">Attention ! le choix d'une <button id="frime" type="button" class="btn btn-warning" onclick="warning($(this))">formule</button> est irréversible !</p>
 		  		</div>
 			</div>
 		</div>
@@ -118,7 +118,7 @@
 				<input type="text" id="repartir" name="repartir" value="" hidden>
 				<input type="text" id="poule" name="poule" value="" hidden>
 				<input type="number" name="idP" id="idP" value="<?php echo $idP ?>" hidden>
-				<input type="text" name="dateT" id="dateT" value="<?php echo $tupleEv['dateEv'] ?>" hidden>
+				<input type="date" name="dateT" id="dateT" value="<?php echo $tupleEv['dateEv'] ?>" hidden>
 				<input type="text" name="lieuT" id="lieuT" value="<?php echo $tupleEv['lieuEv'] ?>" hidden>
 			</form>
 

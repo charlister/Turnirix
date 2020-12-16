@@ -19,8 +19,7 @@
               else {
                 echo "<p>L'événement d'aujourd'hui a été cloturé.</p>";
               }
-            } 
-            else {
+            } else {
               echo "<p>Aucun évènement n'est prévu pour aujourd'hui.</p>";
             }
             
@@ -54,6 +53,36 @@
             </p>
             <p>
               <button id="enregistrer" type="button" class="btn btn-secondary">Préinscrire équipe</button><!-- Bouton lié au span de préinscription -->
+            </p>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <h2>Historique des matchs</h2>
+            <p class="text-justify">
+              Consultez les résultats d'un évènement à partir de sa date. 
+            </p>
+            <p>
+              <form method="post" action="">
+                <?php
+                  $historique = $bdd->query("
+                    SELECT dateEv
+                    FROM evenement 
+                    WHERE idO=? AND dateEv<=now() AND statutEv=1
+                    ORDER BY dateEv",
+                    array($_SESSION['idO']));
+                ?>
+                <label for="historique">Date de l'évènement</label>
+                <select name='historique' class="nc_form_control mb-3">
+                  <?php  
+                    while ($tupleDate = $historique->fetch()) {
+                      echo "<option value='".$tupleDate['dateEv']."'>".$tupleDate['dateEv']."</option>";
+                    }
+                  ?>
+                </select>
+                <button id="rechercher" name="rechercher" type="submit" class="btn btn-secondary">Afficher résultats</button>
+              </form>
             </p>
 
           </div>
@@ -99,8 +128,8 @@
                     <input type="text" class="nc_form_control" name="nomT1" id="nomT1" placeholder="Nom du tournoi" required>
                   </div>
 
-                  <div class="mb-3 col-md-3">
-                    <label for="typeJeu1 ">Type de jeu</label> <br>
+                  <div class="mb-3">
+                    <label for="typeJeu1  col-md-3">Type de jeu</label> <br>
                     <input type="number" class="nc_form_control" name="typeJeu1" id="typeJeu1" min="1" value="1">
                   </div>
 
@@ -202,6 +231,104 @@
                 
             </form>
           </div>
+        </span>
+
+        <span>
+          <?php
+            if (isset($_POST['rechercher'])) {
+              $dateEv = $_POST['historique'];
+              $infos = $bdd->query("
+                SELECT *
+                FROM repartir r, poule p, evenement e
+                WHERE p.idP=r.idP AND e.dateEv=? AND r.dateT=? AND e.idO=?
+                ORDER BY r.nomT, p.tour, p.idP, r.rang",
+                array($dateEv, $dateEv, $_SESSION['idO']));
+
+              $tournois = null;
+              $tours = null;
+              $poules = null;
+              $classement = null;
+              $equipes = null;
+
+              $tournois2 = null;
+              $tours2 = null;
+              $poules2 = null;
+              $classement2 = null;
+              $equipes2 = null;
+
+              $iTournois = 0;
+              $iTours = 0;
+              $iPoules = 0;
+              $iClassement = 0;
+              $iEquipes = 0;
+
+              $arrayRowTableColor = array(
+                "table-primary",
+                "table-secondary"/*,
+                "table-success",
+                "table-danger",
+                "table-warning",
+                "table-info",
+                "table-light"*/);
+              $taille = count($arrayRowTableColor);
+
+              echo "<table class='table table-bordered border-primary'>
+                      <thead class='table-dark'>
+                        <tr>
+                          <th scope='col'>Tournois</th>
+                          <th scope='col'>Tours</th>
+                          <th scope='col'>Poules</th>
+                          <th scope='col'>Classement</th>
+                          <th scope='col'>Equipes</th>
+                        </tr>
+                      </thead>
+                      <tbody>";
+              while ($tuple = $infos->fetch()) {
+                $tournois2 = $tuple["nomT"];
+                $tours2 = $tuple["tour"];
+                $poules2 = $tuple["idP"];
+                $classement2 = $tuple["rang"];
+                $equipes2 = $tuple["nomEq"];
+
+                if ($tournois !== $tournois2) {
+                  $iTournois = ($iTournois+1)%$taille;
+                  $tournois = $tournois2;
+                }
+
+                if ($tours !== $tours2) {
+                  $iTours = ($iTours+1)%$taille;
+                  $tours = $tours2;
+                }
+
+                if ($poules !== $poules2) {
+                  $iPoules = ($iPoules+1)%$taille;
+                  $poules = $poules2;
+                }
+
+                if ($classement !== $classement2) {
+                  $iClassement = ($iClassement+1)%$taille;
+                  $classement = $classement2;
+                }
+
+                if ($equipes !== $equipes2) {
+                  $iEquipes = ($iEquipes+1)%$taille;
+                  $equipes = $equipes2;
+                }
+
+          ?>
+          <?php
+              echo "    <tr>
+                          <td class='".$arrayRowTableColor[$iTournois]."'>".$tuple["nomT"]."</td>
+                          <td class='".$arrayRowTableColor[$iTours]."'>".$tuple["tour"]."</td>
+                          <td class='".$arrayRowTableColor[$iPoules]."'>".$tuple["idP"]."</td>
+                          <td class='".$arrayRowTableColor[$iClassement]."'>".$tuple["rang"]."</td>
+                          <td class='".$arrayRowTableColor[$iEquipes]."'>".$tuple["nomEq"]."</td>
+                        </tr>";
+              }
+              echo "  </tbody>
+                    </table>";
+            }
+          ?>
         </span>
 
       </div> <!-- /container -->
