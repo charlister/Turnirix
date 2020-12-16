@@ -33,14 +33,14 @@
             $cleVerif = md5(time().$courriel);
 
             // On insert nos données dans la table organisateur
-            $bdd->register("INSERT INTO organisateur (nomO, prenomO, courriel, mdp, anniv, sexe, cleVerif) VALUES (?, ?, ?, ?, ?, ?, ?)", array($nomO, $prenomO, $courriel, $mdp, $anniv, $sexe, $cleVerif));
+            $bdd->query("INSERT INTO organisateur (nomO, prenomO, courriel, mdp, anniv, sexe, cleVerif) VALUES (?, ?, ?, ?, ?, ?, ?)", array($nomO, $prenomO, $courriel, $mdp, $anniv, $sexe, $cleVerif));
 
             $to = $courriel;
             $subject = "Email Verification";
             $message = "<a href='http://turnirix/verification.php?cleVerif=$cleVerif'>Confirmez votre compte</a>";
             $headers = "From: app.turnirix@gmail.com \r\n";
             
-            // For usage of html in email
+            // Pour l'utilisation du HTML dans les e-mails
             $headers .= "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 

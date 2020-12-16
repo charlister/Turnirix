@@ -1,3 +1,8 @@
+/**
+ *  \brief fonction implementant la technique de serpentin
+ *  \param equipe : tableau en deux dimensions portant les noms des équipes
+ *  \return tableau en deux dimensions 
+*/
 function serpentinBis(equipe) {
 	let tabSerpentin = new Array();
 	for (let i = 0; i < equipe.length; i++) {

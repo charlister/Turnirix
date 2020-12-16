@@ -21,7 +21,7 @@
         	echo "Un événement dénommé ".$tuple['nomEv']." a déjà été programmé pour le $dateEv à $lieuEv. <br>Veuillez en <a href='http://turnirix/tournois.php'>créer un autre</a> !";
         }
         else { // sinon on insère l'évènement dans la bdd
-        	if ($bdd->register("
+        	if ($bdd->query("
         		INSERT INTO evenement (nomEv, lieuEv, dateEv, sport, nbTournois, idO) 
         		VALUES (?, ?, ?, ?, ?, ?)", 
         		array($nomEv, $lieuEv, $dateEv, $sport, $nbTournois, intval($_SESSION['idO'])))) {
@@ -32,7 +32,7 @@
 	            	$typeJeu = intval(htmlspecialchars(trim($_POST["typeJeu$i"])));
 	            	$frais = intval(htmlspecialchars(trim($_POST["frais$i"])));
 
-	            	$bdd->register("
+	            	$bdd->query("
 	            		INSERT INTO tournois (nomT, typeJeu, frais, lieuT, dateT) 
 	            		VALUES (?, ?, ?, ?, ?)", 
 	            		array($nomT, $typeJeu, $frais, $lieuEv, $dateEv));
@@ -64,7 +64,7 @@
         }
         else { // sinon on insère l'équipe ainsi que ses joueurs dans la bdd.
         	$niveauEq = 0;
-        	if ($bdd->register("
+        	if ($bdd->query("
         		INSERT INTO equipe (nomEq, niveauEq, nomT, dateT, lieuT) 
         		VALUES (?, ?, ?, ?, ?)", 
         		array($nomEq, $niveauEq, $nomT, $dateT, $lieuT))) { // si l'insertion de l'équipe a fonctionné on insère les joueurs
@@ -73,13 +73,13 @@
 	            	$nomJ = htmlspecialchars(trim($_POST["joueur$i"]));
 	            	$niveauJ = intval(htmlspecialchars($_POST["niveau$i"]));
 	            	$niveauEq += $niveauJ;
-	            	$bdd->register("
+	            	$bdd->query("
 	            		INSERT INTO joueur (nomJ, niveauJ, nomEq, nomT, dateT, lieuT) 
 	            		VALUES (?, ?, ?, ?, ?, ?)", 
 	            		array($nomJ, $niveauJ, $nomEq, $nomT, $dateT, $lieuT));
 	            }
 	            $niveauEq = intdiv($niveauEq, $nbJoueurs);
-	            $bdd->register("
+	            $bdd->query("
 	            	UPDATE equipe
 	            	SET niveauEq = $niveauEq
 	            	WHERE LOWER(nomEq) = ? AND niveauEq = 0 AND LOWER(nomT) = ? AND dateT = ? AND LOWER(lieuT) = ?",

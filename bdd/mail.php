@@ -5,14 +5,11 @@
     	extract($_POST);
 
         if (isset($_POST['contact'])){
-        	$nom = htmlspecialchars(strtolower(trim($nom)));
-        	$prenom = htmlspecialchars(strtolower(trim($prenom)));
-        	$courriel = htmlspecialchars(strtolower(trim($courriel)));
-        	$objet = htmlspecialchars(strtolower(trim($objet)));
-        	$message = htmlspecialchars(strtolower(trim($message)));
-
-      //   	ini_set( 'display_errors', 1 );
-		    // error_reporting( E_ALL );
+        	$nom = htmlspecialchars(trim($nom));
+        	$prenom = htmlspecialchars(trim($prenom));
+        	$courriel = htmlspecialchars(trim($courriel));
+        	$objet = htmlspecialchars(trim($objet));
+        	$message = htmlspecialchars(trim($message));
 
 		    $to      = 'app.turnirix@gmail.com';
 			$subject = $objet;
@@ -23,9 +20,12 @@
 			    'X-Mailer' => 'PHP/' . phpversion()
 			);
 
-			$return = mail($to, $subject, $text, $headers);
+			$return = mail($to, $subject, $text, $headers); // resultat de l'envoi du mail
 		    if ($return) {
-		    	echo "Votre message a bien été envoyé. Retourner à la page d'<a href='http://turnirix/'>acceuil</a>";
+		    	echo "Votre message a bien été envoyé. Retournez à la page d'<a href='http://turnirix/'>acceuil</a>";
+		    }
+		    else {
+		    	echo "Votre message n'a pas été envoyé. Retournez à la page de <a href='http://turnirix/contact.php'>contact</a>";
 		    }
         }
     }

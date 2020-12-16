@@ -6,7 +6,7 @@
         $repartir = $_POST['repartir'];
         $repartir = explode(";", $repartir);
         for ($i=0; $i < count($repartir); $i++) {
-            $bdd->register("
+            $bdd->query("
                 INSERT INTO repartir (nomEq, nomT, dateT, lieuT, idP, rang) 
                 VALUES (?, ?, ?, ?, ?, ?)", 
                 explode(",", $repartir[$i]));
@@ -15,7 +15,7 @@
         $poule = $_POST['poule'];
         $poule = explode(";", $poule);
         for ($i=0; $i < count($poule); $i++) {
-            $bdd->register("
+            $bdd->query("
                 INSERT INTO poule (idP, tour, nombreEq) 
                 VALUES (?, ?, ?)", 
                 explode(",", $poule[$i]));

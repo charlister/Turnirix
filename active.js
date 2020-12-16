@@ -1,2 +1,1 @@
-$("a[href='" + this.location.pathname + "']").parents("li").addClass("active");
-console.log(this.location);
+$("a[href='" + this.location.pathname + "']").parents("li").addClass("active"); // technique servant à marquer le nom de la page dans l'entête

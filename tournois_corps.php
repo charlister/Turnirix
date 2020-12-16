@@ -19,7 +19,8 @@
               else {
                 echo "<p>L'événement d'aujourd'hui a été cloturé.</p>";
               }
-            } else {
+            } 
+            else {
               echo "<p>Aucun évènement n'est prévu pour aujourd'hui.</p>";
             }
             
@@ -98,8 +99,8 @@
                     <input type="text" class="nc_form_control" name="nomT1" id="nomT1" placeholder="Nom du tournoi" required>
                   </div>
 
-                  <div class="mb-3">
-                    <label for="typeJeu1  col-md-3">Type de jeu</label> <br>
+                  <div class="mb-3 col-md-3">
+                    <label for="typeJeu1 ">Type de jeu</label> <br>
                     <input type="number" class="nc_form_control" name="typeJeu1" id="typeJeu1" min="1" value="1">
                   </div>
 

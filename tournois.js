@@ -3,11 +3,7 @@ $(".eventForm").hide();
 // Clic sur le bouton "Créer événément"
 $("#creer").click(function (e) {
   $("#creation").toggle(); // on affiche le bloc contenant l'identifiant création s'il est caché ; sinon on le cache.
-  console.log("Toggle effectué");
-  console.log(e.target.getAttribute("id"));
-
   if (e.target.getAttribute("id") === "creer") { // si l'élément sur lequel on clique porte l'id "creer"
-    $("#editer").attr("disabled", true); // on rend inaccessible les deux autres boutons
     $("#enregistrer").attr("disabled", true);
     $(e.target).attr({ // on modifie son style et on change son id
       class : "btn btn-danger", 
@@ -16,7 +12,6 @@ $("#creer").click(function (e) {
     $(e.target).text("Annuler création");  // on modifie le texte que contient ce élément
   } 
   else { // si l'id === "annulerCreation" on revient au format initiale au prochain clic.
-    $("#editer").removeAttr("disabled");
     $("#enregistrer").removeAttr("disabled");
     $(e.target).attr({
       class : "btn btn-secondary",
@@ -29,8 +24,6 @@ $("#creer").click(function (e) {
 // Clic sur le bouton "Préinscrire équipe"
 $("#enregistrer").click(function (e) {
   $("#enregistrement").toggle();
-  console.log("Toggle effectué");
-  console.log(e.target.getAttribute("id"));
   
   if (e.target.getAttribute("id") === "enregistrer") {
     $("#editer").attr("disabled", true);
@@ -73,7 +66,6 @@ $("button#ajouterJoueur").click(function () {
                       </div>\
                     </div>";
   $(this).before(newPlayer);
-  console.log("Champs J"+nbJoueurs+" ajouté !");
 });
 
 $("button#ajouterTournoi").click(function () { 
@@ -93,7 +85,6 @@ $("button#ajouterTournoi").click(function () {
                       </div>\
                     </div>";
   $(this).before(newTournois);
-  console.log("Champs Tournoi "+nbTournois+" ajouté !");
 });
 
 $("button#effacer").click(function (){
